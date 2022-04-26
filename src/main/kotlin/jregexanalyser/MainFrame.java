@@ -32,6 +32,7 @@ package jregexanalyser;
 import jregexanalyser.regex.Pattern;
 import jregexanalyser.regex.PatternSyntaxException;
 import jregexanalyser.regex.Statistics;
+
 import java.awt.Color;
 import java.awt.Desktop;
 import java.awt.Rectangle;
@@ -47,9 +48,13 @@ import java.io.InputStreamReader;
 import java.io.Writer;
 import java.net.URI;
 import java.net.URL;
+import java.util.Collection;
 import java.util.Deque;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.concurrent.LinkedBlockingDeque;
+import java.util.function.Consumer;
+import java.util.function.Function;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JFileChooser;
@@ -69,10 +74,7 @@ import javax.swing.text.BadLocationException;
 import javax.swing.text.DefaultHighlighter;
 import javax.swing.text.Highlighter;
 import javax.swing.text.JTextComponent;
-import javax.swing.tree.DefaultMutableTreeNode;
-import javax.swing.tree.DefaultTreeModel;
-import javax.swing.tree.TreePath;
-import javax.swing.tree.TreeSelectionModel;
+import javax.swing.tree.*;
 
 /**
  * GUI main Window
@@ -86,10 +88,11 @@ public class MainFrame extends javax.swing.JFrame implements RegExWorker.Publish
 
         lastRegEx = "";
         backgroundMatching = new LinkedBlockingDeque<RegExWorker.Task>();
-        
+
         initComponents();
-        
+
         jTestText.setLineWrap(Main.getWrapText());
+        jMatchedText.setLineWrap(Main.getWrapText());
         jReplacedText.setLineWrap(Main.getWrapText());
 
         // create recent test text popup menu
@@ -104,7 +107,7 @@ public class MainFrame extends javax.swing.JFrame implements RegExWorker.Publish
             }
         }
         updateRecentTestTextMenu();
-        
+
         // attach combo box document listener to get changes during edit
         JTextComponent tc = (JTextComponent) jRegExInput.getEditor().getEditorComponent();
         tc.getDocument().addDocumentListener(new ChangedDocumentListener(tc));
@@ -304,6 +307,12 @@ public class MainFrame extends javax.swing.JFrame implements RegExWorker.Publish
         jScrollPane5 = new javax.swing.JScrollPane();
         jMatchTraceTable = new javax.swing.JTable();
         jPanel8 = new javax.swing.JPanel();
+
+        jPanel10 = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel("Result");
+        jScrollPane8 = new javax.swing.JScrollPane();
+        jMatchedText = new javax.swing.JTextArea();
+
         jLabel6 = new javax.swing.JLabel();
         jScrollPane6 = new javax.swing.JScrollPane();
         jReplacementInput = new javax.swing.JTextArea();
@@ -647,6 +656,39 @@ public class MainFrame extends javax.swing.JFrame implements RegExWorker.Publish
         );
 
         jTabbedPane1.addTab("Replacing", jPanel8);
+
+        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
+        jPanel10.setLayout(jPanel10Layout);
+        jPanel10Layout.setHorizontalGroup(
+                jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel10Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel11))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 771, Short.MAX_VALUE)))
+        );
+        jPanel10Layout.setVerticalGroup(
+                jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel10Layout.createSequentialGroup()
+                                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanel10Layout.createSequentialGroup()
+                                                .addContainerGap()
+                                                .addComponent(jLabel11))
+                                        .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE, Short.MAX_VALUE))
+                        )
+        );
+
+        jMatchedText.setEditable(false);
+        jMatchedText.setColumns(20);
+        jMatchedText.setFont(new java.awt.Font("Monospaced", 0, 12)); // NOI18N
+        jMatchedText.setRows(5);
+        jMatchedText.setWrapStyleWord(true);
+        jScrollPane8.setViewportView(jMatchedText);
+
+
+        jTabbedPane1.addTab("Matching", jPanel10);
 
         jSplitResultLabel.setText("Split Result");
 
@@ -997,6 +1039,19 @@ public class MainFrame extends javax.swing.JFrame implements RegExWorker.Publish
         });
     }
 
+    private <T> void recursiveForEach(Iterable<T> iterable, Consumer<T> action, Function<T, Iterable<T>> recursiveSelector) {
+        if (iterable instanceof Collection) if (((Collection<T>) iterable).isEmpty()) return;
+        else if (!iterable.iterator().hasNext()) return;
+        for (T element : iterable) {
+            action.accept(element);
+            recursiveForEach(
+                    recursiveSelector.apply(element),
+                    action,
+                    recursiveSelector
+            );
+        }
+    }
+
     /**
      * Update the GUI to show the results from a matching and analyzing task.
      * @param r
@@ -1005,11 +1060,29 @@ public class MainFrame extends javax.swing.JFrame implements RegExWorker.Publish
         // set result vars
         lastResult = r;
         jPatternDotButton.setEnabled(true);
-        
+
         // update tree models and text
         jCompiledPatternTree.setModel(r.compiledPatternTreeModel);
         jMatchResultTree.setModel(r.matchResultTreeModel);
         jReplacedText.setText(r.res.repl.toString());
+        StringBuilder result = new StringBuilder();
+        Iterable<TreeNode> a = () -> (Iterator<TreeNode>) r.res.tree.children().asIterator();
+        recursiveForEach(
+                a,
+                (node) -> {
+                    if (node.isLeaf())
+                        result
+                                .append(
+                                        (
+                                                (Statistics.Match) ((DefaultMutableTreeNode) node).getUserObject()
+                                        )
+                                                .getText()
+                                )
+                                .append("\n");
+                },
+                (node) -> () -> (Iterator<TreeNode>) node.children().asIterator()
+        );
+        jMatchedText.setText(result.toString());
         splitResultList.clear();
         if (r.res.split != null) {
             int i = 0;
@@ -1069,7 +1142,7 @@ public class MainFrame extends javax.swing.JFrame implements RegExWorker.Publish
     public void triggerMatching() {
         triggerMatching(false, null);
     }
-    
+
     /**
      * Triggers a background matching operation.
      * If explicit matching is requested, a pattern
@@ -1091,7 +1164,7 @@ public class MainFrame extends javax.swing.JFrame implements RegExWorker.Publish
                     "This may be caused by an out of memory condition.\n"+
                     "Running jRegExAnalyser with a console window may yield more information.");
         }
-        
+
         // match implicit only if enabled
         if ((!explicit) && (!Main.getPermanentMatching())) {
             return;
@@ -1111,7 +1184,7 @@ public class MainFrame extends javax.swing.JFrame implements RegExWorker.Publish
 
         jStatusText.setText("matching...");
         Pattern p = null;
-        
+
         String replace = (String)jReplacementInput.getText();
         if (replace == null) {
             replace = "";
@@ -1493,7 +1566,7 @@ public class MainFrame extends javax.swing.JFrame implements RegExWorker.Publish
     public void dispose() {
         super.dispose();
         --instanceCount;
-        
+
         // enqueue background matcher shutdown task
         try {
             backgroundMatching.clear();
@@ -1501,13 +1574,13 @@ public class MainFrame extends javax.swing.JFrame implements RegExWorker.Publish
         } catch (InterruptedException e) {
             System.out.println("warning: unexpected interrupt in enqueue");
         }
-        
+
         if (instanceCount == 0) {
             System.exit(0);
         }
     }
 
-    
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1528,6 +1601,7 @@ public class MainFrame extends javax.swing.JFrame implements RegExWorker.Publish
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JButton jMLEditButton;
     private javax.swing.JToolBar jMainToolBar;
     private javax.swing.JTree jMatchResultTree;
@@ -1552,11 +1626,13 @@ public class MainFrame extends javax.swing.JFrame implements RegExWorker.Publish
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JPanel jPanel10;
     private javax.swing.JButton jPatternDotButton;
     private javax.swing.JToolBar.Separator jPatternDotSeparator;
     private javax.swing.JButton jPreferencesButton;
     private javax.swing.JComboBox jRegExInput;
     private javax.swing.JTextArea jReplacedText;
+    private javax.swing.JTextArea jMatchedText;
     private javax.swing.JTextArea jReplacementInput;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -1565,6 +1641,7 @@ public class MainFrame extends javax.swing.JFrame implements RegExWorker.Publish
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JToolBar.Separator jSeparator3;
