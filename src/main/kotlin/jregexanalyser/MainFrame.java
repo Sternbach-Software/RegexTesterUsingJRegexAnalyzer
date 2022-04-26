@@ -346,7 +346,7 @@ public class MainFrame extends javax.swing.JFrame implements RegExWorker.Publish
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("jRegExAnalyser");
-//        setIconImage((new javax.swing.ImageIcon(getClass().getResource("/com/schwebke/jregexanalyser/res/IconApp.png")).getImage()));
+        setIconImage((new javax.swing.ImageIcon(getClass().getResource("/IconApp.png")).getImage()));
 
         jPanel6.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -355,7 +355,7 @@ public class MainFrame extends javax.swing.JFrame implements RegExWorker.Publish
         jRegExInput.setEditable(true);
         jRegExInput.setModel(new DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-//        jApplyButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/schwebke/jregexanalyser/res/IconReload.png"))); // NOI18N
+        jApplyButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IconReload.png"))); // NOI18N
         jApplyButton.setToolTipText("apply");
         jApplyButton.setMaximumSize(new java.awt.Dimension(30, 30));
         jApplyButton.setMinimumSize(new java.awt.Dimension(30, 30));
@@ -744,7 +744,7 @@ public class MainFrame extends javax.swing.JFrame implements RegExWorker.Publish
         jStatusText.setEditable(false);
         jStatusText.setEnabled(false);
 
-//        jMLEditButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/schwebke/jregexanalyser/res/IconEdit.png"))); // NOI18N
+        jMLEditButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IconEdit.png"))); // NOI18N
         jMLEditButton.setToolTipText("multi line edit");
         jMLEditButton.setMaximumSize(new java.awt.Dimension(30, 30));
         jMLEditButton.setMinimumSize(new java.awt.Dimension(30, 30));
@@ -755,7 +755,7 @@ public class MainFrame extends javax.swing.JFrame implements RegExWorker.Publish
             }
         });
 
-//        jToLiteralButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/schwebke/jregexanalyser/res/IconToLiteral.png"))); // NOI18N
+        jToLiteralButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IconToLiteral.png"))); // NOI18N
         jToLiteralButton.setToolTipText("convert to string literal");
         jToLiteralButton.setMaximumSize(new java.awt.Dimension(30, 30));
         jToLiteralButton.setMinimumSize(new java.awt.Dimension(30, 30));
@@ -811,7 +811,7 @@ public class MainFrame extends javax.swing.JFrame implements RegExWorker.Publish
 
         jMainToolBar.setRollover(true);
 
-//        jNewButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/schwebke/jregexanalyser/res/IconNew.png"))); // NOI18N
+        jNewButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IconNew.png"))); // NOI18N
         jNewButton.setToolTipText("new window");
         jNewButton.setFocusable(false);
         jNewButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -823,7 +823,7 @@ public class MainFrame extends javax.swing.JFrame implements RegExWorker.Publish
         });
         jMainToolBar.add(jNewButton);
 
-//        jExitButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/schwebke/jregexanalyser/res/IconExit.png"))); // NOI18N
+        jExitButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IconExit.png"))); // NOI18N
         jExitButton.setToolTipText("exit");
         jExitButton.setFocusable(false);
         jExitButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -836,7 +836,7 @@ public class MainFrame extends javax.swing.JFrame implements RegExWorker.Publish
         jMainToolBar.add(jExitButton);
         jMainToolBar.add(jSeparator3);
 
-//        jClearButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/schwebke/jregexanalyser/res/IconTrash.png"))); // NOI18N
+        jClearButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IconTrash.png"))); // NOI18N
         jClearButton.setToolTipText("clear history");
         jClearButton.setFocusable(false);
         jClearButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -849,7 +849,7 @@ public class MainFrame extends javax.swing.JFrame implements RegExWorker.Publish
         jMainToolBar.add(jClearButton);
         jMainToolBar.add(jSeparator2);
 
-//        jImportButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/schwebke/jregexanalyser/res/IconImport.png"))); // NOI18N
+        jImportButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IconImport.png"))); // NOI18N
         jImportButton.setToolTipText("import test text from file");
         jImportButton.setFocusable(false);
         jImportButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -861,7 +861,7 @@ public class MainFrame extends javax.swing.JFrame implements RegExWorker.Publish
         });
         jMainToolBar.add(jImportButton);
 
-//        jImportRecentButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/schwebke/jregexanalyser/res/IconImportRecent.png"))); // NOI18N
+        jImportRecentButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IconImportRecent.png"))); // NOI18N
         jImportRecentButton.setToolTipText("import recent test text");
         jImportRecentButton.setEnabled(false);
         jImportRecentButton.setFocusable(false);
@@ -875,7 +875,7 @@ public class MainFrame extends javax.swing.JFrame implements RegExWorker.Publish
         jMainToolBar.add(jImportRecentButton);
         jMainToolBar.add(jPatternDotSeparator);
 
-//        jPatternDotButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/schwebke/jregexanalyser/res/IconDot.png"))); // NOI18N
+        jPatternDotButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IconDot.png"))); // NOI18N
         jPatternDotButton.setToolTipText("visualise pattern");
         jPatternDotButton.setEnabled(false);
         jPatternDotButton.setFocusable(false);
@@ -893,7 +893,7 @@ public class MainFrame extends javax.swing.JFrame implements RegExWorker.Publish
         jMainToolBar.add(jPatternDotButton);
         jMainToolBar.add(jSeparator4);
 
-//        jPreferencesButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/schwebke/jregexanalyser/res/IconPreferences.png"))); // NOI18N
+        jPreferencesButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IconPreferences.png"))); // NOI18N
         jPreferencesButton.setToolTipText("change preferences");
         jPreferencesButton.setFocusable(false);
         jPreferencesButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -906,7 +906,7 @@ public class MainFrame extends javax.swing.JFrame implements RegExWorker.Publish
         jMainToolBar.add(jPreferencesButton);
         jMainToolBar.add(jSeparator1);
 
-//        jHelpButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/schwebke/jregexanalyser/res/IconHelp.png"))); // NOI18N
+        jHelpButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IconHelp.png"))); // NOI18N
         jHelpButton.setToolTipText("help");
         jHelpButton.setFocusable(false);
         jHelpButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -918,7 +918,7 @@ public class MainFrame extends javax.swing.JFrame implements RegExWorker.Publish
         });
         jMainToolBar.add(jHelpButton);
 
-//        jAboutButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/schwebke/jregexanalyser/res/IconAbout.png"))); // NOI18N
+        jAboutButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IconAbout.png"))); // NOI18N
         jAboutButton.setToolTipText("about");
         jAboutButton.setFocusable(false);
         jAboutButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -1443,6 +1443,7 @@ public class MainFrame extends javax.swing.JFrame implements RegExWorker.Publish
             dotWriter.close();
             jStatusText.setText("DOT diagram file '"+dotFile.getCanonicalPath()+"'");
         } catch (IOException ioe) {
+            ioe.printStackTrace();
             JOptionPane.showMessageDialog(
                     this,
                     "Failed to write the dot export file to\n"+

@@ -81,7 +81,7 @@ public class PrefDialog extends javax.swing.JDialog {
         jCancelButton = new javax.swing.JButton();
 
         setTitle("jRegExAnalyser: Preferences");
-        setIconImage((new javax.swing.ImageIcon(getClass().getResource("/com/schwebke/jregexanalyser/res/IconApp.png")).getImage()));
+        setIconImage((new javax.swing.ImageIcon(getClass().getResource("/IconApp.png")).getImage()));
 
         jLabel1.setText("Look'n'Feel");
 

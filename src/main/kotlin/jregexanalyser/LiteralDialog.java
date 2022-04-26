@@ -70,7 +70,7 @@ public class LiteralDialog extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("jRegExAnalyser: String Literal");
-        setIconImage((new javax.swing.ImageIcon(getClass().getResource("/com/schwebke/jregexanalyser/res/IconApp.png")).getImage()));
+        setIconImage((new javax.swing.ImageIcon(getClass().getResource("/IconApp.png")).getImage()));
 
         jOkButton.setText("OK");
         jOkButton.addActionListener(new java.awt.event.ActionListener() {

@@ -69,7 +69,7 @@ public class ImageWindow extends javax.swing.JDialog {
 
         jToolBar1.setRollover(true);
 
-        jExitButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/schwebke/jregexanalyser/res/IconExit.png"))); // NOI18N
+        jExitButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IconExit.png"))); // NOI18N
         jExitButton.setToolTipText("close window");
         jExitButton.setFocusable(false);
         jExitButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -82,7 +82,7 @@ public class ImageWindow extends javax.swing.JDialog {
         jToolBar1.add(jExitButton);
         jToolBar1.add(jSeparator1);
 
-        jZoomInButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/schwebke/ZoomInIcon.png"))); // NOI18N
+        jZoomInButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ZoomInIcon.png"))); // NOI18N
         jZoomInButton.setToolTipText("zoom in");
         jZoomInButton.setFocusable(false);
         jZoomInButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -94,7 +94,7 @@ public class ImageWindow extends javax.swing.JDialog {
         });
         jToolBar1.add(jZoomInButton);
 
-        jZoomOutButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/schwebke/ZoomOutIcon.png"))); // NOI18N
+        jZoomOutButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ZoomOutIcon.png"))); // NOI18N
         jZoomOutButton.setToolTipText("zoom out");
         jZoomOutButton.setFocusable(false);
         jZoomOutButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);

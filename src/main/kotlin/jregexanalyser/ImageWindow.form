@@ -37,7 +37,7 @@
         <Component class="javax.swing.JButton" name="jExitButton">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/com/schwebke/jregexanalyser/res/IconExit.png"/>
+              <Image iconType="3" name="/IconExit.png"/>
             </Property>
             <Property name="toolTipText" type="java.lang.String" value="close window"/>
             <Property name="focusable" type="boolean" value="false"/>
@@ -53,7 +53,7 @@
         <Component class="javax.swing.JButton" name="jZoomInButton">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/com/schwebke/ZoomInIcon.png"/>
+              <Image iconType="3" name="/ZoomInIcon.png"/>
             </Property>
             <Property name="toolTipText" type="java.lang.String" value="zoom in"/>
             <Property name="focusable" type="boolean" value="false"/>
@@ -67,7 +67,7 @@
         <Component class="javax.swing.JButton" name="jZoomOutButton">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/com/schwebke/ZoomOutIcon.png"/>
+              <Image iconType="3" name="/ZoomOutIcon.png"/>
             </Property>
             <Property name="toolTipText" type="java.lang.String" value="zoom out"/>
             <Property name="focusable" type="boolean" value="false"/>

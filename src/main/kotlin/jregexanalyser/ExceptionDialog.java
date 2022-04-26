@@ -77,7 +77,7 @@ public class ExceptionDialog extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/schwebke/ErrorIcon.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ErrorIcon.png"))); // NOI18N
 
         jOkButton.setText("OK");
         jOkButton.addActionListener(new java.awt.event.ActionListener() {

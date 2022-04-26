@@ -63,7 +63,7 @@ public class RegExEdit extends javax.swing.JDialog {
         jSeparator1 = new javax.swing.JSeparator();
 
         setTitle("jRegExAnalyser: Multi Line Edit");
-        setIconImage((new javax.swing.ImageIcon(getClass().getResource("/com/schwebke/jregexanalyser/res/IconApp.png")).getImage()));
+        setIconImage((new javax.swing.ImageIcon(getClass().getResource("/IconApp.png")).getImage()));
 
         jTextArea1.setColumns(20);
         jTextArea1.setFont(new java.awt.Font("Monospaced", 0, 12));
