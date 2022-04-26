@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="JRegexAnalyzer:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/JRegexAnalyzer_jar</output-path>
+    <root id="archive" name="JRegexAnalyzer.jar">
+      <element id="module-output" name="RegexTesterUsingJRegexAnalyzer" />
+    </root>
+  </artifact>
+</component>

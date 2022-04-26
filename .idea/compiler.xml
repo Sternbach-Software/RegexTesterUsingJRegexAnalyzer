@@ -2,7 +2,7 @@
 <project version="4">
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="AutoDownloadMITVids" options="--add-exports java.base/sun.text=ALL-UNNAMED" />
+      <module name="RegexTesterUsingJRegexAnalyzer" options="--add-exports java.base/sun.text=ALL-UNNAMED" />
     </option>
   </component>
 </project>

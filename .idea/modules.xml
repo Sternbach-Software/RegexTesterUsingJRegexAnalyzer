@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/AutoDownloadMITVids.iml" filepath="$PROJECT_DIR$/AutoDownloadMITVids.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RegexTesterUsingJRegexAnalyzer.iml" filepath="$PROJECT_DIR$/RegexTesterUsingJRegexAnalyzer.iml" />
     </modules>
   </component>
 </project>
