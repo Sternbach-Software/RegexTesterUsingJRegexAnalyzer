@@ -605,7 +605,7 @@ public class MainFrame extends javax.swing.JFrame implements RegExWorker.Publish
                     .addGap(0, 0, 0)))
         );
 
-        jTabbedPane1.addTab("Matching", jPanel7);
+        jTabbedPane1.addTab("Tracing", jPanel7);
 
         jLabel6.setText("Replacement");
 
