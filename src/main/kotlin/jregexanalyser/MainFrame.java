@@ -273,6 +273,7 @@ public class MainFrame extends javax.swing.JFrame implements RegExWorker.Publish
         jLabel1 = new javax.swing.JLabel();
         jRegExInput = new javax.swing.JComboBox();
         jApplyButton = new javax.swing.JButton();
+        jReplaceButton = new javax.swing.JButton();
         jOptionsPanel = new javax.swing.JPanel();
         jOpt_CANON_EQ = new javax.swing.JCheckBox();
         jOpt_CASE_INSENSITIVE = new javax.swing.JCheckBox();
@@ -363,6 +364,18 @@ public class MainFrame extends javax.swing.JFrame implements RegExWorker.Publish
         jApplyButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 jApplyButtonActionPerformed(evt);
+            }
+        });
+
+        jReplaceButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ReplaceText.png"))); // NOI18N
+//        jReplaceButton.setText("Replace");
+        jReplaceButton.setToolTipText("Apply replacement to original text");
+        jReplaceButton.setMaximumSize(new java.awt.Dimension(30, 30));
+        jReplaceButton.setMinimumSize(new java.awt.Dimension(30, 30));
+        jReplaceButton.setPreferredSize(new java.awt.Dimension(30, 30));
+        jReplaceButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                jReplaceButtonActionPerformed(evt);
             }
         });
 
@@ -783,7 +796,9 @@ public class MainFrame extends javax.swing.JFrame implements RegExWorker.Publish
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jToLiteralButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jApplyButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jApplyButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jReplaceButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
             .addComponent(jStatusText)
             .addComponent(jSplitPane1)
@@ -797,6 +812,7 @@ public class MainFrame extends javax.swing.JFrame implements RegExWorker.Publish
                         .addComponent(jLabel1)
                         .addComponent(jRegExInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jApplyButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jReplaceButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jToLiteralButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jMLEditButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -1133,6 +1149,10 @@ public class MainFrame extends javax.swing.JFrame implements RegExWorker.Publish
 
     private void jApplyButtonActionPerformed(ActionEvent evt) {//GEN-FIRST:event_jApplyButtonActionPerformed
         triggerMatching(true, getRegEx());
+    }
+    private void jReplaceButtonActionPerformed(ActionEvent evt) {//GEN-FIRST:event_jApplyButtonActionPerformed
+        jTestText.setText(jReplacedText.getText());
+//        triggerMatching(true, getRegEx());
     }
 
     /**
@@ -1587,6 +1607,7 @@ public class MainFrame extends javax.swing.JFrame implements RegExWorker.Publish
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jAboutButton;
     private javax.swing.JButton jApplyButton;
+    private javax.swing.JButton jReplaceButton;
     private javax.swing.JButton jClearButton;
     private javax.swing.JTree jCompiledPatternTree;
     private javax.swing.JButton jExitButton;
